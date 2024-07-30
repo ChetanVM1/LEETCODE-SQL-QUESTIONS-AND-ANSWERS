@@ -1,5 +1,11 @@
 Average time of process per machine
 
+Notes:
+
+When we want to create 2 tables from a single table, we use equi join.
+We can mention filtering condition in ON clause itself by using "AND".
+
+
 Table: Activity
 
 +----------------+---------+
