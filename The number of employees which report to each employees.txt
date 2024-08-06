@@ -48,11 +48,11 @@ Explanation: Hercy has 2 people report directly to him, Alice and Bob. Their ave
 
 Answer:
 
-select e1.employee_id, e1.name, 
-count(e2.reports_to) reports_count, round(avg(e2.age),0) average_age
+select e2.reports_to employee_id, e1.name, 
+count(e1.employee_id) reports_count, round(avg(e2.age),0) average_age
 from Employees e1 inner join Employees e2
 on e1.employee_id = e2.reports_to 
-group by e1.employee_id;
+group by e2.reports_to;
 
 
 or
@@ -62,7 +62,6 @@ with cte1 as
 round(avg(age)) Average_age from Employees
 where reports_to is not null
  group by reports_to
-
 )
 select cte1.employee_id,
 (select name from employees e where e.employee_id = cte1.employee_id) name,
