@@ -62,7 +62,9 @@ The customers who bought all the products (5 and 6) are customers with IDs 1 and
 
 Answer:
 
-select distinct customer_id from customer c 
+
+select customer_id from Customer 
 group by customer_id
-having count(product_key) = (select count(product_key) from Product);
+having count(distinct product_key) = (select count(distinct product_key) ct from Product);
+
 
